@@ -1,0 +1,8 @@
+.App{
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  /* border: 1px solid green; */
+  margin: 2rem;
+}

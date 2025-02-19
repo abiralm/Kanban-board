@@ -1,0 +1,111 @@
+.column{
+    background: #e5dd9a;
+    min-height: 20rem;
+    color:#000000;
+    justify-content: center;
+    width: 33%;
+    margin: 3.5rem;
+    max-width:20rem;
+    border-radius: 2.5rem;
+    padding: 1rem;
+    text-align: center;
+    border: .19rem solid black;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* title of classes */
+.heading{
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.8rem;
+    margin: .75rem 0rem;
+}
+
+.titleWrap{
+    display: flex;
+    justify-content: space-evenly;
+    margin:0rem;
+    align-items: center;
+    /* border: 1px solid; */
+    padding: .5rem;
+}
+
+.add-btn {
+    width: 2.25rem; 
+    height: 2.25rem; 
+    padding: 0; 
+    border-radius: 50%; 
+    font-weight: bold;
+    font-size: 1.75em;
+    background-color: #35b5f5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.add-btn:hover{
+    background-color: #2268c3;
+    color: white;
+}
+
+.Modal{
+    position: absolute;
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    border: 1px solid;
+}
+
+.modalContent{
+    background: white;
+    position: absolute;
+    border: 1px solid;
+    border-radius: 2rem;
+    z-index: 1;
+    padding: .25rem;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,50%);
+}   
+
+.modalContent>*{
+    margin:.3rem;
+}
+
+.input{
+    width: 60%;
+    padding: .25rem;
+    font-size: 1rem;
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.submit{
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #35b5f5;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    padding: .5rem;
+    cursor: pointer; 
+}
+
+/* color for differnt types of notes */
+.COMPLETED{
+    background-color: #ade0c1;
+}
+
+.ONGOING{
+    background-color: #e4c1f9;
+}
