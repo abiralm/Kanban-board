@@ -28,7 +28,7 @@ const useStore = create<StoreType>((set)=>({
 
     draggedTask:null,
 
-    setDraggedTask:(task:Tasks | null )=> set(()=>({draggedTask:task})) ,
+    setDraggedTask:(task:Tasks | null )=> set(()=>({draggedTask:task})) ,//Adding this comment to check
 
     moveTask:(title,newState)=>set((store)=>({ tasks: store.tasks.map((task) => task.title === title ? { ...task,  state:newState } : task) }))
 }))
