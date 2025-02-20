@@ -102,6 +102,10 @@
     cursor: pointer; 
 }
 
+.submit:hover{
+    background-color: #2268c3;
+}
+
 .cancel{
     font-weight: bold;
     font-size: 1em;
@@ -111,6 +115,10 @@
     border-radius: 2rem;
     padding: .5rem;
     cursor: pointer; 
+}
+
+.cancel:hover{
+    background-color: #353535;
 }
 
 /* color for differnt types of notes */
