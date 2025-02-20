@@ -21,16 +21,41 @@ const useStore = create<StoreType>((set)=>({
     
     tasks: JSON.parse(localStorage.getItem("tasks") || "[]"),
 
-    addTask:(title: Tasks["title"],state: Tasks["state"])=>set((store)=>({tasks:[...store.tasks,{title,state}]})    
-),
+    // addTask:(title: Tasks["title"],state: Tasks["state"])=>set
+    // ((store)=>({tasks:[...store.tasks,{title,state}]}))
 
-    deleteTask:(title:Tasks["title"])=>set((store)=>({tasks:store.tasks.filter((task)=>task.title!==title)})),
+    addTask: (title: Tasks["title"], state: Tasks["state"]) => 
+        set((store) => {
+            const newTask = { title, state };
+            const updatedTasks = [...store.tasks, newTask];
+            localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+            return { tasks: updatedTasks };
+    }),
+
+    // deleteTask:(title:Tasks["title"])=>
+    //     set((store)=>({tasks:store.tasks.filter((task)=>task.title!==title)})
+    // ),
+
+    deleteTask:(title:Tasks["title"])=>
+        set((store)=>{
+            const updatedTasks  = store.tasks.filter((task) => task.title !== title);
+            localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+            return { tasks: updatedTasks };
+    }),
 
     draggedTask:null,
 
-    setDraggedTask:(task:Tasks | null )=> set(()=>({draggedTask:task})) ,//Adding this comment to check
-
-    moveTask:(title,newState)=>set((store)=>({ tasks: store.tasks.map((task) => task.title === title ? { ...task,  state:newState } : task) }))
+    setDraggedTask:(task:Tasks | null )=> set(()=>({draggedTask:task})) ,
+    
+    moveTask:(title,newState)=>
+        set((store)=>{
+           const movedTasks = store.tasks.map((task) =>
+            task.title === title ? { ...task, state: newState } : task);
+           localStorage.setItem("tasks",JSON.stringify(movedTasks));
+           return {tasks:movedTasks};
+        })
+        
+    // moveTask:(title,newState)=>set((store)=>({ tasks: store.tasks.map((task) => task.title === title ? { ...task,  state:newState } : task) }))
 }))
 
 export default useStore

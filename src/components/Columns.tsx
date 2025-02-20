@@ -18,6 +18,15 @@ const Columns = ({ state }: columnProp) => {
   
     const filteredTasks = tasks.filter((task) => task.state === state)
 
+    function validateInput(){
+      const inputVal = document.getElementsByClassName("input")[0] as HTMLInputElement;
+      if (inputVal && inputVal.value){
+        return true
+      }else{
+        alert("Please enter some text")
+      }
+    };
+
     // This will fetch the entire store state
     // const storeState = useStore.getState();  
     // console.log("Zustand Store State:", storeState);
@@ -40,9 +49,7 @@ const Columns = ({ state }: columnProp) => {
         <p className="heading">{state}</p>
 
         {/* add button */}
-        <button className="add-btn"onClick={()=>setOpen(true)}>
-          +
-        </button>
+        <button className="add-btn"onClick={()=>setOpen(true)}>+</button>
 
       </div>
 
@@ -50,16 +57,23 @@ const Columns = ({ state }: columnProp) => {
       {open &&(<div className="Modal">
 
         <div className="modalContent">
-          <input className="input" onChange={(e)=>setText(e.target.value)} value={text} placeholder="Enter a task" />
+          
+          <input className="input" onChange={(e)=>setText(e.target.value)} value={text} placeholder="Enter a task" required/>
 
-          <button 
-            className="submit"
-            onClick={()=>{
-              addTask(text,state);
-              setText("");
-              setOpen(false);
-            }}>
+          <button className="submit"
+            onClick={() => {
+              if (validateInput()) {
+                addTask(text, state);
+                setText("");
+                setOpen(false);
+              }
+            }}
+          >
             Add
+          </button>
+
+          <button className="cancel" onClick={()=>setOpen(false)}>
+            Cancel
           </button>
 
         </div>
