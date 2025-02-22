@@ -6,7 +6,8 @@ interface StoreType {
     deleteTask:(title: Tasks["title"])=>void;
     draggedTask:Tasks | null,
     setDraggedTask: (task:Tasks | null)=>void;
-    moveTask:(title:Tasks["title"],newState:Tasks["state"])=>void
+    moveTask:(title:Tasks["title"],newState:Tasks["state"])=>void;
+    editTask:(title:Tasks["title"],newTitle:Tasks["title"],state:Tasks["state"])=>void;
 }
 
 
@@ -53,9 +54,18 @@ const useStore = create<StoreType>((set)=>({
             task.title === title ? { ...task, state: newState } : task);
            localStorage.setItem("tasks",JSON.stringify(movedTasks));
            return {tasks:movedTasks};
-        })
+        }),
         
     // moveTask:(title,newState)=>set((store)=>({ tasks: store.tasks.map((task) => task.title === title ? { ...task,  state:newState } : task) }))
+
+    editTask: (title, newTitle, state) =>
+        set((store) => {
+          const editedTasks = store.tasks.map((task) =>
+            task.title === title ? { ...task, title: newTitle, state } : task
+          );
+          localStorage.setItem("tasks", JSON.stringify(editedTasks));
+          return { tasks: editedTasks };
+        }),
 }))
 
 export default useStore

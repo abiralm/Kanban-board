@@ -17,6 +17,7 @@
 .container{
     /* border: 1px solid green; */
     display: flex;
+    margin: .2rem;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -33,33 +34,35 @@
     color: white;
 }
 
-/* .DONE{
-    background-color: var(--COLOR-DONE);
+.buttons-div{
+    display: flex;
 }
 
-.ONGOING{
-    background-color: var(--COLOR-ONGOING);
+.buttons-div>*{
+    margin: 0rem .2rem;
+}
 
-} */
-
-.delete{
-    width: 2rem; 
-    height: 2rem; 
+.delete,.edit{
+    width: 2.22rem; 
+    height: 2.22rem; 
     padding: .4rem; 
     border-radius: 50%; 
     font-weight: bold;
     font-size: .8em;
-    background-color: #dd0f0f;
-    color: white;
-    border: none;
+    /* background-color: #dd0f0f; */
+    border: .2rem solid #880000;
+    color: #880000;
     cursor: pointer;
     display: flex; 
     align-items: center; 
     justify-content: center; 
 }
 
-.delete:hover{
+.delete:hover,.edit:hover{
     background-color: #880000;
+    color:white;
+    border: none
+
 }
 
 .task{
